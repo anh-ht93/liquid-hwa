@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { publicKeyCreate, ecdsaSign, signatureExport } from 'secp256k1';
 import { bytesToHexString } from 'src/utils/converters';
 import { SigningDTO } from './signing.interface';
@@ -22,8 +22,13 @@ export class SigningService {
   }
 
   sign(signing: SigningDTO): SigningService {
-    const { signature } = ecdsaSign(signing.message, signing.privateKey);
-    this._signature = signatureExport(signature);
+    try {
+      const { signature } = ecdsaSign(signing.message, signing.privateKey);
+      this._signature = signatureExport(signature);
+    } catch(e) {
+      throw new BadRequestException(e, "Error while signing")
+    }
+    
     return this;
   }
 }

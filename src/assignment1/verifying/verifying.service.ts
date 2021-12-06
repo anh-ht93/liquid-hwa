@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { ecdsaVerify, signatureImport } from 'secp256k1';
 import { VerifyingDTO } from './verifying.interface';
 
