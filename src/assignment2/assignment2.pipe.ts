@@ -15,10 +15,8 @@ class HashNormalizePipe implements PipeTransform<string, string> {
 
   private validate(input: string) {
     if (!is32ByteHex(input)) {
-      throw new HttpException(
-        'hash should be a valid 32-byte hex string',
-        HttpStatus.BAD_REQUEST,
-      );
+      const message = 'hash should be a valid 32-byte hex string'
+      throw new HttpException(message,HttpStatus.BAD_REQUEST, );
     }
   }
 }

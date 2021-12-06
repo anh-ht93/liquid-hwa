@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, UsePipes } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, UsePipes } from '@nestjs/common';
 import {
   SigningDTO,
   SigningRequest,
@@ -25,6 +25,7 @@ export class Assignments1Controller {
   ) {}
 
   @Post('sign')
+  @HttpCode(HttpStatus.OK)
   @UsePipes(SigningRequestMapperPipe)
   async sign(@Body() payload: SigningDTO): Promise<SigningResponse> {
     return {
@@ -33,16 +34,16 @@ export class Assignments1Controller {
   }
 
   @Post('publicKey')
+  @HttpCode(HttpStatus.OK)
   @UsePipes(KeyMapperPipe)
-  async createPublicKey(
-    @Body('key') key: Uint8Array,
-  ): Promise<PublicKeyResponse> {
+  async createPublicKey(@Body('key') key: Uint8Array): Promise<PublicKeyResponse> {
     return {
       publicKey: this.signingService.createPublicKey(key).publicKey,
     };
   }
 
   @Post('verify')
+  @HttpCode(HttpStatus.OK)
   @UsePipes(VerifyingRequestMapperPipe)
   async verify(@Body() payload: VerifyingDTO): Promise<VerifyingResponse> {
     return {
