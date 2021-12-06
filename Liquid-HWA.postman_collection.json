@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "b2c80c7b-a72f-4376-b89c-be122333dc1c",
+		"name": "Liquid-HWA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Assignment1",
+			"item": [
+				{
+					"name": "Sign",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"privateKey\": \"b12dbc163d7935fba5ba11aba0691a11b2f6a2235c1ffa51718955e2e1da6249\",\r\n    \"message\": \"hello_world\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/assignment1/sign",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"assignment1",
+								"sign"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Public Key",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\": \"b12dbc163d7935fba5ba11aba0691a11b2f6a2235c1ffa51718955e2e1da6249\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/assignment1/publicKey",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"assignment1",
+								"publicKey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"hello_world\",\r\n    \"publicKey\": \"04b0c4047cd4e6f28593cff46cd99ad1ba9f65388dd7a641c50e34c0d5fbc4c0fdc6a827a966691c0e18dd0347464df79f623d9d86e2e566aeb25abf1da8c6f9a8\",\r\n    \"signature\": \"304402200a0d96e12d5f20282d2505cec1919ce243177ce1ff6a99920c6e6d33ce0756d402207bbfee6c1c41971c53c68afeaec688b9f442cc1688cdbd088ce8aea0897fc795\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/assignment1/verify",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"assignment1",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Assignment2",
+			"item": [
+				{
+					"name": "GetTransaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/assignment2/transaction/0x6cdb1d1d2828afe634323331e73c65b9d67b2fd1b71c95b3ff4597ec588c09b2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"assignment2",
+								"transaction",
+								"0x6cdb1d1d2828afe634323331e73c65b9d67b2fd1b71c95b3ff4597ec588c09b2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
